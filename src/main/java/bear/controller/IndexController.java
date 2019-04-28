@@ -1,11 +1,12 @@
 package bear.controller;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/")
+@Component
 public class IndexController {
 
-	@RequestMapping("test")
+	@RequestMapping("/test")
 	public void test() {
 		System.out.println("test in ");
 	}
