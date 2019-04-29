@@ -6,11 +6,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import bear.test.User;
+import bear.model.User;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages= "bear")
+@ComponentScan(basePackages={"bear"})
 public class SpringConfig {
 	
 	public static void main(String[] args) {

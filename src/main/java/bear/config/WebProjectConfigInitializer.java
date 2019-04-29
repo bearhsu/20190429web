@@ -2,10 +2,12 @@ package bear.config;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
 
 public class WebProjectConfigInitializer implements WebApplicationInitializer {
 
@@ -14,6 +16,7 @@ public class WebProjectConfigInitializer implements WebApplicationInitializer {
 		// TODO Auto-generated method stub
 		initializeSpringConfig(arg0);
 
+		initializeDispatcher(arg0);
 	}
 
 	private void initializeSpringConfig(ServletContext container) {
@@ -22,6 +25,15 @@ public class WebProjectConfigInitializer implements WebApplicationInitializer {
 		rootContext.register(SpringConfig.class);
 		// Manage the life cycle of the root application context
 		container.addListener(new ContextLoaderListener(rootContext));
+	}
+	
+	private void initializeDispatcher(ServletContext container) {
+		AnnotationConfigWebApplicationContext webContext = new AnnotationConfigWebApplicationContext();
+		webContext.register(MyMvcConfig.class);
+		webContext.setServletContext(container);
+		ServletRegistration.Dynamic registration = container.addServlet("dispatcher", new DispatcherServlet(webContext));
+		registration.addMapping("/");
+		registration.setLoadOnStartup(1);
 	}
 
 
