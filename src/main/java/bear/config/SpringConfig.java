@@ -4,13 +4,14 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import bear.model.User;
 
 @Configuration
-@EnableWebMvc
 @ComponentScan(basePackages={"bear"})
+@Import({WebConfig.class})
 public class SpringConfig {
 	
 	public static void main(String[] args) {

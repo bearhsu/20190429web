@@ -29,7 +29,7 @@ public class WebProjectConfigInitializer implements WebApplicationInitializer {
 	
 	private void initializeDispatcher(ServletContext container) {
 		AnnotationConfigWebApplicationContext webContext = new AnnotationConfigWebApplicationContext();
-		webContext.register(MyMvcConfig.class);
+		webContext.register(SpringConfig.class);
 		webContext.setServletContext(container);
 		ServletRegistration.Dynamic registration = container.addServlet("dispatcher", new DispatcherServlet(webContext));
 		registration.addMapping("/");
