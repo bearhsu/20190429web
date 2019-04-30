@@ -14,9 +14,9 @@ public class WebProjectConfigInitializer implements WebApplicationInitializer {
 	@Override
 	public void onStartup(ServletContext arg0) throws ServletException {
 		// TODO Auto-generated method stub
-		initializeSpringConfig(arg0);
-
-		initializeDispatcher(arg0);
+//		initializeSpringConfig(arg0);
+//
+//		initializeDispatcher(arg0);
 	}
 
 	private void initializeSpringConfig(ServletContext container) {

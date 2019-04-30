@@ -15,7 +15,10 @@ import bear.model.User;
 public class SpringConfig {
 	
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("bear");
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		context.register(SpringConfig.class);
+		AnnotationConfigApplicationContext context2 = new AnnotationConfigApplicationContext();
+		context2.register(SpringConfig.class);
 		
 		String[] beans = context.getBeanDefinitionNames();
 		
@@ -23,7 +26,10 @@ public class SpringConfig {
 			System.out.println(bean.toString());
 		}
 		User user = (User) context.getBean("user");
-		System.out.println(user.getName());
+		User user2 = (User) context2.getBean("user");
+		System.out.println(user);
+		System.out.println(user2);
+		System.out.println(user.equals(user2));
 
 	}
 	
