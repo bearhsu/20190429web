@@ -11,7 +11,6 @@ import bear.model.User;
 
 @Configuration
 @ComponentScan(basePackages={"bear"})
-@Import({WebConfig.class})
 public class SpringConfig {
 	
 	public static void main(String[] args) {

@@ -7,13 +7,13 @@ public class AnnotationConfigDispatcherServletInitializer extends AbstractAnnota
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[] {SpringConfig.class};
+		return new Class[] {RootConfig.class};
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[] {SpringConfig.class};
+		return new Class[] {WebConfig.class};
 	}
 
 	@Override
