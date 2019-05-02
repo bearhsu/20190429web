@@ -10,8 +10,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-@Configuration
-@EnableWebMvc// ①
+//@Configuration
+//@EnableWebMvc// ①
 //@ComponentScan("org.light4j.springMvc4")
 public class MyMvcConfig extends WebMvcConfigurerAdapter {// ②
 
