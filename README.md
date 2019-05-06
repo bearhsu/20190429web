@@ -31,16 +31,24 @@ spring 專案練習
 4.引入WebApplicationInitializer,server啟動會從onStartup注入設定
 
 5.改成AbstractAnnotationConfigDispatcherServletInitializer
+
 該類繼承引入WebApplicationInitializer提供部分設定跟method簡化設定難度
+
 RootConfig注入controller以外spring容器
+
 WebConfig注入controller容器,Web設定由此類設定
 
 6.WebConfig加上@EnableWebMvc跟繼承WebMvcConfigurer介面
+
 configureDefaultServletHandling設定基本servletHandl
+
 addResourceHandlers設定靜態資源目錄
+
 addViewControllers設定預設index.html
 
 7.AnnotationConfigDispatcherServletInitializer複寫registerContextLoaderListener方法
+
 加入contextLoader之前插入logListener引入指定路徑logback.xml檔案
+
 
 
