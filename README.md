@@ -4,12 +4,19 @@ spring 專案練習
 
 技術:
 1.springframework 5
+
 2.angularJs 1
+
 3.html
+
 4.css
+
 5.java 8
+
 6.tomcat 8
+
 7.maven project
+
 8.logback 日誌
 
 
