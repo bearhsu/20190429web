@@ -17,10 +17,10 @@ public class WebServiceController {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@RequestMapping(value="/user")
-	public User getUserInfo(@RequestBody User user) {
+	public User getUserInfo(@RequestBody User user) throws Exception {
 		logger.info("====== WebService getUser in =====");
 		user.setId("root");
-		
+
 		return user;
 	}
 	
