@@ -19,6 +19,9 @@ public class WebServiceController {
 	@RequestMapping(value="/user")
 	public User getUserInfo(@RequestBody User user) throws Exception {
 		logger.info("====== WebService getUser in =====");
+		logger.error("====== WebService getUser in =====");
+		logger.debug("====== WebService getUser in =====");
+		logger.warn("====== WebService getUser in =====");
 		user.setId("root");
 
 		return user;

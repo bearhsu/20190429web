@@ -3,13 +3,20 @@
 	scanPeriod="10 seconds">
 	
 	<property name="LOG_HOME" value="target/logs" />
+
+	<property name="encoding" value="UTF-8" />
+
+	<property name="maxSize" value="10MB" />
+
+	<property name="defaultFileName" value="default" />
+
+	<property name="pattern" value="[%d{yyyy/MM/dd HH:mm:ss.SSS}] [%thread] %-5level %logger{50}[%line] - %msg%n" />
 	
-	<appender name="STDOUT"
-		class="ch.qos.logback.core.ConsoleAppender">
-		<Encoding>UTF-8</Encoding>
-		<layout class="ch.qos.logback.classic.PatternLayout">
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} [%line] %msg%n</pattern>
-		</layout>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+        	<pattern>${pattern}</pattern>
+        	<charset>${encoding}</charset>
+        </encoder>
 	</appender>
 	
 	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
@@ -43,12 +50,12 @@
 
 	<logger name="bear" level="DEBUG" additivity="false">
 		<appender-ref ref="STDOUT" />
-		<appender-ref ref="FILE" />
+<!-- 		<appender-ref ref="FILE" /> -->
 	</logger>
 
 	<root level="ERROR">
 		<appender-ref ref="STDOUT" />
-		<appender-ref ref="FILE" />
+<!-- 		<appender-ref ref="FILE" /> -->
 	</root>
 
 </configuration>
