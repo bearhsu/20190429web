@@ -19,14 +19,50 @@
         </encoder>
 	</appender>
 	
-	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
-		<file>${LOG_HOME}/myLog.log</file>
-		<encoder>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} [%line] %msg%n</pattern>
-		</encoder>
+<!-- 	<appender name="FILE" class="ch.qos.logback.core.FileAppender"> -->
+<!-- 		<file>${LOG_HOME}/myLog.log</file> -->
+<!-- 		<encoder> -->
+<!-- 			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} [%line] %msg%n</pattern> -->
+<!-- 		</encoder> -->
+<!-- 	</appender> -->
+
+	<appender name="IP_LOG" class="ch.qos.logback.classic.sift.SiftingAppender">
+		<!--discriminator鉴别器，根据taskId这个key对应的value鉴别日志事件，然后委托给具体appender写日志 -->
+		<discriminator>
+			<key>$IP</key>
+			<defaultValue>${defaultFileName}</defaultValue>
+		</discriminator>
+		<sift>
+			<!--具体的写日志appender，每一个taskId创建一个文件 -->
+			<appender name="IP_LOG" class="ch.qos.logback.core.FileAppender">
+				<append>true</append>
+				
+		        <file>${LOG_HOME}/%d{yyyy-MM-dd}_${$IP}_web.log</file>
+		        
+<!-- 		        <filter class = "ch.qos.logback.classic.filter.ThresholdFilter" > -->
+<!-- 		        		<level>DEBUG</level> -->
+<!-- 		        </filter> -->
+		        
+				<!-- %i代表檔案超過設定大小,還沒到達設定日期時切割檔案 -->
+	            <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+					<fileNamePattern>${LOG_HOME}/archive/%d{yyyy-MM-dd}_${$IP}.%i.log.zip</fileNamePattern>
+					<minIndex>1</minIndex>
+					<maxIndex>9</maxIndex>
+			    </rollingPolicy>
+
+			    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+				      <maxFileSize>${maxSize}</maxFileSize>
+			    </triggeringPolicy>
+			    
+		        <encoder>
+		        	<pattern>${pattern}</pattern>
+		        	<charset>${encoding}</charset>
+		        </encoder>
+			</appender>
+		</sift>
 	</appender>
 	
-	<!-- 按照每天生成日志文件 -->
+    <!-- 按照每天生成日志文件 -->
     <appender name="ROLLINGFILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
@@ -50,12 +86,12 @@
 
 	<logger name="bear" level="DEBUG" additivity="false">
 		<appender-ref ref="STDOUT" />
-<!-- 		<appender-ref ref="FILE" /> -->
+		<appender-ref ref="IP_LOG" />
 	</logger>
 
 	<root level="ERROR">
 		<appender-ref ref="STDOUT" />
-<!-- 		<appender-ref ref="FILE" /> -->
+		<appender-ref ref="IP_LOG" />
 	</root>
 
 </configuration>

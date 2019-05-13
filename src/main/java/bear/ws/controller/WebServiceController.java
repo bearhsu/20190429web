@@ -14,14 +14,14 @@ import bear.model.User;
 	,consumes="application/json",produces="application/json;charset=UTF-8")
 public class WebServiceController {
 	
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	@RequestMapping(value="/user")
 	public User getUserInfo(@RequestBody User user) throws Exception {
-		logger.info("====== WebService getUser in =====");
-		logger.error("====== WebService getUser in =====");
-		logger.debug("====== WebService getUser in =====");
-		logger.warn("====== WebService getUser in =====");
+		log.info("====== WebService getUser in =====");
+		log.error("====== WebService getUser in =====");
+		log.debug("====== WebService getUser in =====");
+		log.warn("====== WebService getUser in =====");
 		user.setId("root");
 
 		return user;
