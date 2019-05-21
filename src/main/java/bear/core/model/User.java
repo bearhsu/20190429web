@@ -1,5 +1,8 @@
 package bear.core.model;
 
+import org.springframework.stereotype.Component;
+
+@Component("user")
 public class User {
 
 	private String name;
