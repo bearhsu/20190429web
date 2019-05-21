@@ -18,7 +18,7 @@ public class AnnotationConfigDispatcherServletInitializer extends AbstractAnnota
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[] {WebConfig.class};
+		return new Class[] {WebConfig.class,WebServiceConfig.class};
 	}
 
 	@Override

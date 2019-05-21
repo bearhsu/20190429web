@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import bear.model.User;
+import bear.core.model.User;
 
 @Configuration
 @ComponentScan(basePackages={"bear"})

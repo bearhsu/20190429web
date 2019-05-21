@@ -1,4 +1,4 @@
-package bear.controller;
+package bear.web.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 
-import bear.model.User;
+import bear.core.model.User;
 
 @RestController
 public class IndexController {

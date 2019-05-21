@@ -1,4 +1,4 @@
-package bear.model;
+package bear.core.model;
 
 public class User {
 
